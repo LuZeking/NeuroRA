@@ -557,10 +557,8 @@ def eegRDM_bydecoding(EEG_data, sub_opt=1, time_win=5, time_step=5, navg=5, time
             if con1 > con2:
 
                 data = np.concatenate((EEG_data[con1], EEG_data[con2]), axis=1)
-                print(data.shape)
                 labels = np.zeros([subs, 2*trials])
                 labels[:, trials:] = 1
-                print(labels.shape)
                 rdms[:, :, con1, con2] = tbyt_decoding_kfold(data, labels, n=2, navg=navg, time_opt=time_opt,
                                                              time_win=time_win, time_step=time_step, nfolds=nfolds,
                                                              nrepeats=nrepeats, normalization=normalization,

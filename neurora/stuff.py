@@ -1331,7 +1331,7 @@ def clusterbased_permutation_1d_1sided(results1, results2, p_threshold=0.05, clu
                                        iter=1000):
 
     """
-    1-sample & 1-sided cluster based permutation test for 2-D results
+    1-sided cluster based permutation test for 2-D results
 
     Parameters
     ----------
@@ -1364,7 +1364,7 @@ def clusterbased_permutation_1d_1sided(results1, results2, p_threshold=0.05, clu
     ps = np.zeros([x])
     ts = np.zeros([x])
     for t in range(x):
-        ts[t], p = ttest_1samp(results1[:, t], results2[:, t], alternative='greater')
+        ts[t], p = ttest_rel(results1[:, t], results2[:, t], alternative='greater')
         if p < p_threshold and ts[t] > 0:
             ps[t] = 1
         else:
@@ -1429,7 +1429,7 @@ def clusterbased_permutation_1d_2sided(results1, results2, p_threshold=0.05, clu
                                        iter=1000):
 
     """
-    1-sample & 2-sided cluster based permutation test for 2-D results
+    2-sided cluster based permutation test for 2-D results
 
     Parameters
     ----------
